@@ -1,7 +1,23 @@
+import React, { useEffect, useState } from "react";
+import Movies from "../Movies/Movies";
 
 function HeroHome() {
+  const [movies, setMovies] = useState([]);
   return (
     <div className="relative bg-white overflow-hidden">
+      <div>
+      {movies.map((movie) => (
+        <Movies
+          key={movie[0].id}
+          title={movie[0].title}
+          release_date={movie[0].release_date}
+          image={movie[0].poster_path}
+          overview={movie[0].overview}
+          vote_average={movie[0].vote_average}
+        />
+      ))}
+      </div>
+      
       <div className="mx-auto">
         <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
           <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
