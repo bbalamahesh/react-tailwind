@@ -55,6 +55,7 @@ function MovieList() {
                             image={movie.poster_path}
                             overview={movie.overview}
                             vote_average={movie.vote_average}
+                            original_title={movie.original_title}
                         />
                     ))}
                 </ul>
