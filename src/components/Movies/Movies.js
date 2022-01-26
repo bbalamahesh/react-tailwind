@@ -1,5 +1,6 @@
 import React from 'react'
 import { XIcon } from '@heroicons/react/outline'
+import Placeholder from './../../assets/images/No-Image-Placeholder.png'
 export default function Movies({ title, release_date, image, overview, vote_average }) {
 
     const [showModal, setShowModal] = React.useState(false);
@@ -8,7 +9,7 @@ export default function Movies({ title, release_date, image, overview, vote_aver
             <li className="group">
                 <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                     <img
-                        src={"https://image.tmdb.org/t/p/w500/" + image}
+                        src={"https://image.tmdb.org/t/p/w500/" + image != "https://image.tmdb.org/t/p/w500/"+null ? "https://image.tmdb.org/t/p/w500/" + image : Placeholder}
                         alt={title}
                         className="cursor-pointer w-full h-full object-center object-cover group-hover:opacity-75"
                         onClick={() => setShowModal(true)}
