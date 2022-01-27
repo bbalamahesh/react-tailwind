@@ -56,6 +56,7 @@ function MovieList() {
                             overview={movie.overview}
                             vote_average={movie.vote_average}
                             original_title={movie.original_title}
+                            vote_count={movie.vote_count}
                         />
                     ))}
                 </ul>

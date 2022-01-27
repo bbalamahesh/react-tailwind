@@ -11,6 +11,11 @@ function Homepage() {
         <Header />
         <HeroHome />
         <MovieList />
+        <footer className="text-center text-white bg-gray-800">
+          <div className="text-center p-4">
+            © 2021 Copyright
+          </div>
+        </footer>
       </Router>
     </>
   );
