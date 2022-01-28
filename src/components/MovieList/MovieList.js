@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Movies from "../Movies/Movies";
+import Pagination from 'reactjs-hooks-pagination';
+import { data } from "autoprefixer";
 
 function MovieList() {
     const API_KEY = "67029a41f2f57fb40a0583274a6c678c";
@@ -7,18 +9,25 @@ function MovieList() {
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("Avengers");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalRecords, setTotalRecords] = useState(data.totalRecords);
+    // const [pageLimit, setPageLimit] = useState(data.total_pages + 1);
+    let pageLimit = data.total_pages
 
     useEffect(() => {
         async function getMovies() {
             const response = await fetch(
-                `https://api.themoviedb.org/4/search/movie?api_key=${API_KEY}&language=en-US&query=${query}`
+                `https://api.themoviedb.org/4/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${currentPage}`
             );
             const data = await response.json();
             console.log(data.results);
             setMovies(data.results);
+            setTotalRecords(data.total_results)
+            console.log(data.total_results);
+            console.log(data.total_pages);
         }
         if (query !== "") getMovies();
-    }, [query]);
+    }, [query, currentPage]);
 
     const updateMovies = (e) => {
         e.preventDefault();
@@ -30,13 +39,15 @@ function MovieList() {
         setQuery(search);
     };
 
+   
+
     return (
         <div className="bg-white">
             <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2>Movie List</h2>
                 <div className="flex justify-center">
                     <div className="mb-3 xl:w-96">
-                        <div className="input-group relative flex items-stretch w-full mb-4" 
+                        <div className="input-group relative flex items-stretch w-full mb-4"
                             onChange={updateMovies}
                             value={search}
                         >
@@ -57,9 +68,18 @@ function MovieList() {
                             vote_average={movie.vote_average}
                             original_title={movie.original_title}
                             vote_count={movie.vote_count}
+                            total_results={data.total_results}
                         />
                     ))}
                 </ul>
+                <div className="d-flex flex-row py-4 justify-content-end">
+                    <Pagination
+                        totalRecords={totalRecords}
+                        pageLimit={pageLimit}
+                        pageRangeDisplayed={1}
+                        onChangePage={setCurrentPage}
+                    />
+                </div>
             </div>
 
         </div>
