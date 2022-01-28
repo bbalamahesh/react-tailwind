@@ -19,3 +19,8 @@ code {
 svg.star-svg {
   display: inline-block;
 }
+
+img.cursor-pointer.w-full.h-full.object-center.object-cover {
+  max-height: 420px;
+  height: 420px;
+}
