@@ -41,9 +41,10 @@ function Header() {
                   />
                   <img
                     className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                     alt="Workflow"
                   />
+                  <span className="text-white font-extrabold text-xl pl-2">MovieFlix</span>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <ul className="flex space-x-4">
