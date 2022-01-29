@@ -76,7 +76,7 @@ function MovieList() {
                     <Pagination
                         totalRecords={totalRecords}
                         pageLimit={pageLimit}
-                        pageRangeDisplayed={1}
+                        pageRangeDisplayed={0}
                         onChangePage={setCurrentPage}
                     />
                 </div>
